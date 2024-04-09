@@ -29,27 +29,37 @@ const Board = () => {
 
   const handleClick = (i) => {
     if (calculateWinner(squares) || squares[i]) return;
-    squares[i] = isXTurn ? 'X' : 'O';
-    setSquares(squares.slice());
+    const newSquares = squares.slice();
+    newSquares[i] = isXTurn ? 'X' : 'O';
+    setSquares(newSquares);
     setIsXTurn(!isXTurn);
 
-    if (!isXTurn) return; // Only request AI move after human plays
+    if (!isXTurn) return; 
 
-    const state = squares.map(val => val === 'X' ? 1 : val === 'O' ? -1 : 0);
-    axios.post('http://127.0.0.1:5000/ai-move', { state })
-      .then(response => {
-        const aiMove = response.data.ai_move;
-        if (aiMove !== undefined && squares[aiMove] === null) {
-          squares[aiMove] = 'O';
-          setSquares(squares.slice());
-          setIsXTurn(true);
-        }
-      })
-      .catch(error => console.error('There was an error with the AI move:', error));
+    if (!calculateWinner(newSquares) && newSquares.every(square => square !== null)) {
+      alert('Draw!');
+      return; 
+    }
 
-    if (!calculateWinner(squares) && squares.every(square => square !== null)) {
-        alert('Draw!');
-    }  
+    setTimeout(() => {
+      const state = newSquares.map(val => val === 'X' ? 1 : val === 'O' ? -1 : 0);
+      axios.post('http://127.0.0.1:5000/ai-move', { state })
+          .then(response => {
+              const aiMove = response.data.ai_move;
+              if (aiMove !== undefined && newSquares[aiMove] === null) {
+                  newSquares[aiMove] = 'O';
+                  setSquares(newSquares);
+                  setIsXTurn(true);
+
+                  
+                  if (!calculateWinner(newSquares) && newSquares.every(square => square !== null)) {
+                      alert('Draw!');
+                  }
+              }
+          })
+          .catch(error => console.error('There was an error with the AI move:', error));
+    }, 200); 
+ 
   };
 
   const renderSquare = (i) => (

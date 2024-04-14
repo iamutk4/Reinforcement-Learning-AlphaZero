@@ -54,7 +54,7 @@ const Board = () => {
         val === "X" ? 1 : val === "O" ? -1 : 0
       );
       axios
-        .post("http://127.0.0.1:50000/ai-move", { state })
+        .post("http://127.0.0.1:5000/ai-move", { state })
         .then((response) => {
           const aiMove = response.data.ai_move;
           if (aiMove !== undefined && newSquares[aiMove] === null) {

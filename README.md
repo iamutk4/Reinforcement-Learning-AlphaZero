@@ -54,16 +54,33 @@ python AlphaZero.ipynb
 ## TicTacToe GUI (Player vs Agent)
 
 1. Navigate to ```cd TicTacToe_UI```
-2. Run ```app.py``` file:
+2. Navigate to ```cd backend```
+3. Run ```app.py``` file to start the backend server (Make sure environment is activated)
 
 ```
 python app.py
 ```
-3. Navigate to ```cd my-app```
-4. Start development server by:
+4. In a separate terminal, navigate to ```cd frontend```
+5. Start frontend server by:
 
 ```
 npm install
 npm start
 ```
 
+## ConnectFour GUI (Player vs Agent)
+
+1. Navigate to ```cd ConnectFour_UI```
+2. Navigate to ```cd backend```
+3. Run ```app.py``` file to start the backend server (Make sure environment is activated)
+
+```
+python app.py
+```
+4. In a separate terminal, navigate to ```cd frontend```
+5. Start frontend server by:
+
+```
+npm install
+npm start
+```

@@ -41,12 +41,29 @@ git clone https://github.com/yourusername/AlphaZero-Implementation.git'
 conda create -n alphazero
 conda activate alphazero
 ```
-3. Install dependencies:
+3. Install conda an pip dependencies:
 ```
-conda env update -f environment.yml
+conda env update -f conda_environment.yml
+pip install -r pip_requirements.txt
 ```
 4. Run AlphaZero.ipynb notebook
 ```
 python AlphaZero.ipynb
+```
+
+## TicTacToe GUI (Player vs Agent)
+
+1. Navigate to ```cd TicTacToe_UI```
+2. Run ```app.py``` file:
+
+```
+python app.py
+```
+3. Navigate to ```cd my-app```
+4. Start development server by:
+
+```
+npm install
+npm start
 ```
 

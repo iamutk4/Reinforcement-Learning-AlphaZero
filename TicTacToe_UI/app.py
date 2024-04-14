@@ -10,7 +10,7 @@ CORS(app)
 game = TicTacToe()
 device = torch.device("cpu")  
 model = ResNet(game, 4, 64, device)
-model.load_state_dict(torch.load('model_2_TicTacToe.pt', map_location=device))
+model.load_state_dict(torch.load('../model_2_TicTacToe.pt', map_location=device))
 model.eval()
 
 

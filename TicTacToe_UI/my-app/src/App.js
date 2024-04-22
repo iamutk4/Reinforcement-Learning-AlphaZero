@@ -58,7 +58,7 @@ const Board = () => {
               }
           })
           .catch(error => console.error('There was an error with the AI move:', error));
-    }, 200); 
+    }, 10); 
  
   };
 

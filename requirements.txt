@@ -1,0 +1,7 @@
+Flask
+Flask_Cors
+matplotlib-inline
+notebook
+numpy
+torch
+tqdm

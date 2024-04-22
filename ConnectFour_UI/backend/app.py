@@ -10,7 +10,7 @@ CORS(app)
 game = ConnectFour()
 device = torch.device("cpu")  
 model = ResNet(game, 9, 128, device)
-model.load_state_dict(torch.load('./model_7_ConnectFour_OSC.pt', map_location=device))
+model.load_state_dict(torch.load('../../model_7_ConnectFour.pt', map_location=device))
 model.eval()
 
 
@@ -30,10 +30,8 @@ mcts = MCTS(game, args, model)
 def ai_move():
     data = request.json
     state = np.array(data['state']).reshape((6, 7)).astype(np.int32)  # Assuming state is sent as a 6x7 array
-    state_encoded = game.get_encoded_state(state).reshape(1, 6, 7, 3)  
-    tensor_state = torch.tensor(state_encoded, dtype=torch.float32, device=device)
 
-    player = data.get('player', 1)  # Assuming player info is sent, else defaults to player 1
+    player = -1  
 
     # Perform MCTS search
     neutral_state = game.change_perspective(state, player)

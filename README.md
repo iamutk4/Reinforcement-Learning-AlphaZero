@@ -44,7 +44,7 @@ conda activate alphazero
 3. Install conda an pip dependencies:
 ```
 conda env update -f conda_environment.yml
-pip install -r pip_requirements.txt
+pip install -r requirements.txt
 ```
 4. Run AlphaZero.ipynb notebook
 ```
